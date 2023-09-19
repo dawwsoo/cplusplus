@@ -71,7 +71,7 @@ int main() {
 
 for (int k = arr; k >=0; k--) {
 	for (int j =0; j<i; j++) {
-		cout << arr2[k][j]<<" ";
+		cout << arr2[k][j] <<" ";
 	}
 	cout << endl;
 }
