@@ -53,7 +53,7 @@ using namespace std;
 
 
 int end(int k) {
-	if ((k < 1) || (k > 9))
+	if ((k < 0) || (k > 9))
 		return 1;
 	return 0;
 }
@@ -69,10 +69,10 @@ int main()
 	user.clear();
 
 	int i = 0;
-	while (i < 3) {
+	while (i < 4) {
 		srand(time(nullptr));
 		int ran = rand();
-		int random = ran % 9 + 1;
+		int random = ran % 10;
 		if (find(comp.begin(), comp.end(), random) != comp.end()) //겹치지 않아
 			continue;
 
@@ -82,28 +82,30 @@ int main()
 
 		}
 	}
-	cout << "computer 숫자 확인용 : ";
-	for (auto k : comp) {
+	//cout << "computer 숫자 확인용 : ";
+
+	/*for (auto k : comp) {
 		cout  << k << " ";
 	}
-	cout << endl;
+	cout << endl;*/
 	int a = 0;
 	int b = 0;
 	int c = 0;
+	int d = 0;
 	int ball = 0;
 	int strike = 0;
 	int count = 0;
 
-	while (strike != 3) {
+	while (strike != 4) {
 		strike = 0;
 		ball = 0;
-		cout << endl<<"1~9 사이의 숫자 3개를 입력 하시오. (이외의 숫자 : 종료) " << endl;
-		cin >> a >> b >> c;
-		if (end(a) || end(b) || end(c)) {
+		cout << endl<<"0~9 사이의 숫자 4개를 입력 하시오. (이외의 숫자 : 종료) " << endl;
+		cin >> a >> b >> c>>d;
+		if (end(a) || end(b) || end(c)||end(d)) {
 			cout << "게임을 종료하였습니다.";
 			break;
 		} //1~9사이의 숫자가 아닐 경우 종료시키기
-		else if (a == b || b == c || c == a)
+		else if (a == b || b == c || c == a||a==d||b==d||c==d)
 		{
 			cout << "중복된 수가 있습니다. " << endl;
 			continue;
@@ -113,10 +115,13 @@ int main()
 			user.push_back(a);
 			user.push_back(b);
 			user.push_back(c);
+			user.push_back(d);
+
+			
 			count++;
 		}
 
-		for (i = 0; i < 3; i++) {
+		for (i = 0; i < 4; i++) {
 			if (user[i] == comp[i])
 				strike++;
 			else {
@@ -133,7 +138,7 @@ int main()
 		user.clear();
 	}
 	
-	if (strike == 3) {
+	if (strike == 4) {
 		cout << count << "번 만에 맞췄습니다.";
 	}
 }
