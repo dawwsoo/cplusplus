@@ -4,7 +4,6 @@
 #include<fstream>
 #include<string>
 
-
 using namespace std;
 using std::string;
 
@@ -55,7 +54,8 @@ int main() {
 		// 항목 선택 가능
 		cin >> table_num;
 		cout << endl;
-
+		if (table_num < 1 && table_num>3)
+			break;
 		switch (table_num) {
 		case(1):
 			cout << "알파벳을 입력하세요 . : ";
@@ -71,7 +71,7 @@ int main() {
 					have = correct.find(alpha, have + 1);
 				}
 				for (auto i : spot) {
-					show.replace(i, 1, alpha);//인덱스 번호가 바로 들어와야 한다.}
+					show.replace(i, 1, alpha);//인덱스 번호가 바로 들어와야 한다.
 				}			
 				cout << show << endl;
 				spot.clear();
@@ -81,6 +81,7 @@ int main() {
 			cout << "답을 입력해주세요 : ";
 			cin >> user;
 			cout << endl;
+
 			if (user == correct)
 			{
 				cout << "## 축하합니다 ! 정답입니다 ##" << endl;
